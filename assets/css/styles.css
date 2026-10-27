@@ -1,0 +1,350 @@
+/* ============ RESET ============ */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+/* ============ VARIABLES ============ */
+:root {
+    /*--bg-gradient: linear-gradient(135deg, #667eea 0%, #764ba2 100%);*/
+    /*--bg-gradient: linear-gradient(90deg,#9370db 0%,#8b008b,#4b0082 100%);*/
+    --bg-gradient: linear-gradient(135deg,#9370db 0%,#8b008b,#4b0082 100%);
+    --text-primary: #ffffff;
+    --text-secondary: rgba(255, 255, 255, 0.75);
+    --card-bg: rgba(255, 255, 255, 0.1);
+    --card-border: rgba(255, 255, 255, 0.18);
+    --link-bg: rgba(255, 255, 255, 0.12);
+    --link-border: rgba(255, 255, 255, 0.2);
+    --link-hover: rgba(255, 255, 255, 0.22);
+    --shadow: 0 8px 32px rgba(0, 0, 0, 0.2);
+    --blob-color-1: rgba(255, 255, 255, 0.15);
+    --blob-color-2: rgba(255, 100, 200, 0.25);
+}
+
+body.light {
+    /*--bg-gradient: linear-gradient(135deg, #a8edea 0%, #fed6e3 100%);*/
+    /*--bg-gradient: linear-gradient(90deg,#d181f0,#cedcf2 0%,#dcf2ce,#f2cedc,#ffbf6e 100%);*/
+    --bg-gradient: linear-gradient(135deg,#d181f0 0%,#cedcf2,#dcf2ce,#f2cedc,#ffbf6e 100%);
+    --text-primary: #1a1a2e;
+    --text-secondary: rgba(26, 26, 46, 0.65);
+    --card-bg: rgba(255, 255, 255, 0.55);
+    --card-border: rgba(255, 255, 255, 0.9);
+    --link-bg: rgba(255, 255, 255, 0.7);
+    --link-border: rgba(0, 0, 0, 0.05);
+    --link-hover: rgba(255, 255, 255, 0.95);
+    --shadow: 0 8px 32px rgba(0, 0, 0, 0.08);
+    --blob-color-1: rgba(255, 255, 255, 0.5);
+    --blob-color-2: rgba(255, 180, 210, 0.5);
+}
+
+/* ============ BASE ============ */
+body {
+    font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto,
+        Oxygen, Ubuntu, Cantarell, sans-serif;
+    background: var(--bg-gradient);
+    background-attachment: fixed;
+    color: var(--text-primary);
+    min-height: 100vh;
+    display: flex;
+    justify-content: center;
+    padding: 50px 20px 40px;
+    transition: color 0.4s ease;
+    overflow-x: hidden;
+}
+
+/* ============ BLOBS ============ */
+.bg-blob {
+    position: fixed;
+    border-radius: 50%;
+    filter: blur(80px);
+    pointer-events: none;
+    z-index: 0;
+    transition: background 0.4s ease;
+}
+.blob-1 {
+    width: 400px;
+    height: 400px;
+    background: var(--blob-color-1);
+    top: -120px;
+    left: -120px;
+}
+.blob-2 {
+    width: 350px;
+    height: 350px;
+    background: var(--blob-color-2);
+    bottom: -100px;
+    right: -100px;
+}
+
+/* ============ CONTENEDOR ============ */
+.container {
+    width: 100%;
+    max-width: 620px;
+    position: relative;
+    z-index: 1;
+    display: flex;
+    flex-direction: column;
+    gap: 28px;
+}
+
+/* ============ PERFIL ============ */
+.profile {
+    text-align: center;
+    animation: fadeInUp 0.6s ease both;
+}
+
+.avatar-ring {
+    width: 132px;
+    height: 132px;
+    margin: 0 auto 18px;
+    border-radius: 50%;
+    padding: 4px;
+    background: linear-gradient(135deg, #ff6ec4, #7873f5, #4adede);
+    animation: float 4s ease-in-out infinite;
+    box-shadow: 0 8px 30px rgba(0, 0, 0, 0.25);
+}
+
+.avatar {
+    width: 100%;
+    height: 100%;
+    border-radius: 50%;
+    object-fit: cover;
+    display: block;
+    border: 3px solid transparent;
+    background-clip: padding-box;
+}
+
+.name {
+    font-size: 1.7rem;
+    font-weight: 700;
+    letter-spacing: -0.02em;
+}
+
+.username {
+    color: var(--text-secondary);
+    font-size: 0.95rem;
+    margin-top: 4px;
+    font-weight: 500;
+}
+
+.bio {
+    color: var(--text-secondary);
+    margin-top: 12px;
+    font-size: 1rem;
+    line-height: 1.5;
+    padding: 0 10px;
+}
+
+/* ============ ENLACES ============ */
+.links {
+    display: flex;
+    flex-direction: column;
+    gap: 14px;
+}
+
+.link {
+    display: flex;
+    align-items: center;
+    gap: 16px;
+    padding: 16px 22px;
+    background: var(--link-bg);
+    border: 1px solid var(--link-border);
+    border-radius: 16px;
+    color: var(--text-primary);
+    text-decoration: none;
+    font-weight: 600;
+    font-size: 1rem;
+    backdrop-filter: blur(10px);
+    -webkit-backdrop-filter: blur(10px);
+    transition: transform 0.25s ease, background 0.3s ease,
+        border-color 0.3s ease, box-shadow 0.3s ease, color 0.3s ease;
+    animation: fadeInUp 0.6s ease both;
+    box-shadow: var(--shadow);
+}
+
+.link:nth-child(1) { animation-delay: 0.05s; }
+.link:nth-child(2) { animation-delay: 0.1s; }
+.link:nth-child(3) { animation-delay: 0.15s; }
+.link:nth-child(4) { animation-delay: 0.2s; }
+.link:nth-child(5) { animation-delay: 0.25s; }
+.link:nth-child(6) { animation-delay: 0.3s; }
+.link:nth-child(7) { animation-delay: 0.35s; }
+.link:nth-child(8) { animation-delay: 0.4s; }
+.link:nth-child(9) { animation-delay: 0.45s; }
+
+.link i:first-child {
+    font-size: 1.3rem;
+    width: 24px;
+    text-align: center;
+    flex-shrink: 0;
+    transition: transform 0.3s ease;
+}
+
+.link span {
+    flex: 1;
+    text-align: left;
+}
+
+.link .arrow {
+    font-size: 0.85rem;
+    opacity: 0.5;
+    transition: transform 0.3s ease, opacity 0.3s ease;
+}
+
+.link:hover {
+    background: var(--brand);
+    border-color: var(--brand);
+    color: #ffffff;
+    transform: translateY(-3px) scale(1.015);
+    box-shadow: 0 12px 28px rgba(0, 0, 0, 0.25);
+}
+
+.link:hover .arrow {
+    transform: translateX(4px);
+    opacity: 1;
+}
+
+.link:hover i:first-child {
+    transform: scale(1.15) rotate(-6deg);
+}
+
+.link:active {
+    transform: translateY(-1px) scale(1);
+}
+
+/* ============ FOOTER ============ */
+.footer {
+    text-align: center;
+    display: flex;
+    flex-direction: column;
+    gap: 16px;
+    animation: fadeInUp 0.6s ease 0.5s both;
+}
+
+.share-btn {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    gap: 10px;
+    padding: 12px 22px;
+    background: var(--card-bg);
+    border: 1px solid var(--card-border);
+    border-radius: 50px;
+    color: var(--text-primary);
+    font-size: 0.95rem;
+    font-weight: 600;
+    cursor: pointer;
+    margin: 0 auto;
+    backdrop-filter: blur(10px);
+    -webkit-backdrop-filter: blur(10px);
+    transition: all 0.25s ease;
+    font-family: inherit;
+}
+
+.share-btn:hover {
+    background: var(--link-hover);
+    transform: translateY(-2px);
+    box-shadow: var(--shadow);
+}
+
+.copyright {
+    color: var(--text-secondary);
+    font-size: 0.82rem;
+    opacity: 0.85;
+}
+
+/* ============ BOTÓN TEMA ============ */
+.theme-toggle {
+    position: fixed;
+    top: 20px;
+    right: 20px;
+    width: 46px;
+    height: 46px;
+    border-radius: 50%;
+    border: 1px solid var(--card-border);
+    background: var(--card-bg);
+    color: var(--text-primary);
+    font-size: 1.1rem;
+    cursor: pointer;
+    backdrop-filter: blur(12px);
+    -webkit-backdrop-filter: blur(12px);
+    z-index: 10;
+    transition: transform 0.3s ease, background 0.3s ease;
+    display: grid;
+    place-items: center;
+    box-shadow: var(--shadow);
+}
+
+.theme-toggle:hover {
+    transform: rotate(20deg) scale(1.08);
+}
+
+/* ============ TOAST ============ */
+.toast {
+    position: fixed;
+    bottom: 30px;
+    left: 50%;
+    transform: translate(-50%, 120%);
+    background: rgba(30, 30, 30, 0.95);
+    color: #fff;
+    padding: 14px 24px;
+    border-radius: 12px;
+    font-size: 0.95rem;
+    font-weight: 500;
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.35);
+    transition: transform 0.35s cubic-bezier(0.4, 0, 0.2, 1);
+    z-index: 100;
+}
+
+.toast.show {
+    transform: translate(-50%, 0);
+}
+
+/* ============ ANIMACIONES ============ */
+@keyframes fadeInUp {
+    from {
+        opacity: 0;
+        transform: translateY(20px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+@keyframes float {
+    0%, 100% { transform: translateY(0); }
+    50%      { transform: translateY(-6px); }
+}
+
+/* ============ RESPONSIVE ============ */
+@media (max-width: 480px) {
+    body {
+        padding: 40px 16px 30px;
+    }
+    .name { font-size: 1.45rem; }
+    .bio { font-size: 0.92rem; }
+    .link {
+        padding: 14px 18px;
+        font-size: 0.95rem;
+        border-radius: 14px;
+    }
+    .avatar-ring {
+        width: 112px;
+        height: 112px;
+    }
+    .theme-toggle {
+        top: 14px;
+        right: 14px;
+        width: 42px;
+        height: 42px;
+    }
+}
+
+@media (prefers-reduced-motion: reduce) {
+    *, *::before, *::after {
+        animation: none !important;
+        transition: none !important;
+    }
+}

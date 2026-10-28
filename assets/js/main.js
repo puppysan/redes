@@ -33,7 +33,7 @@ const shareBtn = document.getElementById("shareBtn");
 shareBtn.addEventListener("click", async () => {
     const shareData = {
         title: document.title,
-        text: "¡Sígueme en mis redes sociales!",
+        text: "¡Sígueme en todas mis redes sociales!",
         url: window.location.href,
     };
 
